@@ -20,12 +20,14 @@ public class Main extends PApplet {
 
 	public void setup() {
 		
-		ArrayList<String> words = new ArrayList<>();
-		ArrayList<Lyrics> lyricsList = new ArrayList<>();
-		frameRate(20);
-		
+		//ArrayList<String> words = new ArrayList<>();
+		//ArrayList<Lyrics> lyricsList = new ArrayList<>();
+		lyricsList = new ArrayList<Lyrics>();
+		words = new ArrayList<String>();
+		frameRate(40);
+
 		loadText();
-		
+
 		for (int i = 0; i < texts.length; i++) {
 			String[] arrayWords = texts[i].split(" ");
 			for (int j = 0; j < arrayWords.length; j++) {
@@ -33,48 +35,51 @@ public class Main extends PApplet {
 				// -10), 2, this));
 				words.add(arrayWords[j]);
 			}
-			
+
 		}
-		
-		for (int k = 0; k < words.size(); k++) {
+
+		/*for (int k = 0; k < words.size(); k++) {
 			lyricsList.add(new Lyrics(words.get(k), (int) random(15, 580), (int) random(-70, -10), 2, this));
 			System.out.println(lyricsList.get(k).getPosX());
 		}
 
-		ready = true;
-		
+		ready = true;*/
+
 	}
 
 	public void draw() {
 		background(255);
 		noStroke();
-		fill(245);
+		fill(225);
 
 		rect(0, 600, 600, 75);
 		
-		if (ready = true) {
-			for (int k = 0; k < lyricsList.size(); k++) {
-				fill(0);
-				//System.out.println(lyricsList.get(k));
-				lyricsList.get(k).paintLyrics();
-			}
-		}
+		initArray();
+		paintArray();
+
 		
-		// System.out.println(frameCount);
-		// lyrics.createLyrics();
-		/*
-		 * if (frameCount % 20 == 0) { for (int k = 0; k < words.size(); k++) {
-		 * System.out.println("termina"); lyrics.paintLyrics(words.get(k)); frameCount =
-		 * 0;
-		 * 
-		 * }
-		 * 
-		 * }
-		 */
 	}
-	
+
 	private void loadText() {
 		texts = loadStrings("./assets/strings.txt");
+	}
+
+	private void initArray() {
+		if (frameCount == 40) {
+			for (int k = 0; k < words.size(); k++) {
+				lyricsList.add(new Lyrics(words.get(k), (int) random(15, 580), (int) random(-70, -10), 2, this));
+				System.out.println(lyricsList.get(k).getPosX());
+				frameCount = 0;
+			}
+		}
+	}
+	
+	private void paintArray() {
+		for (int i = 0; i < lyricsList.size(); i++) {
+			lyricsList.get(i).paintLyrics();
+			System.out.println(lyricsList.get(i).getPosX());
+
+		}
 	}
 
 }
