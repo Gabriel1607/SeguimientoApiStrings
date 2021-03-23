@@ -17,12 +17,13 @@ public class Main extends PApplet {
 
 	
 	public void settings() {
-		size (600,700);
+		size (600,675);
 		
 	}
 
 
 	public void setup() {
+		background(255);
 		ArrayList<String> words = new ArrayList<>();
 		//lyrics = new Lyrics(getPosX(), getPosY(), getSpeed(), this);
 		
@@ -38,13 +39,16 @@ public class Main extends PApplet {
 		for (int k = 0; k < words.size(); k++) {
 			fill (0);
 			textSize(12);
+			text(words.get(k), random (15, 580), random (15, 580));
 			//words.get(k).createLyrics();
 			}
 		}
 		
 
 	public void draw() {
-		background(255);
+		noStroke();
+		fill (245);
+		rect (0, 600, 600, 75);
 		
 		
 	}
