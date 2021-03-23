@@ -80,7 +80,7 @@ public class Main extends PApplet {
 		for (int i = 0; i <= 3; i++) {
 			//int randomIndex = (int) random(0, 164);
 			//System.out.println(randomIndex);
-			chosenWordsList.add(new ChoosenWords(lyricsList.get((int) random(0, 164)).getLyric(), 50 + (i * 80), 650, this));
+			chosenWordsList.add(new ChosenWords(lyricsList.get((int) random(0, 164)).getLyric(), 50 + (i * 80), 650, this));
 			//System.out.println(chosenWordsList.get(i).getLyric());
 		}
 		
