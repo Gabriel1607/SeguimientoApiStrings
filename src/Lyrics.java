@@ -1,39 +1,22 @@
 import processing.core.PApplet;
 
-public class Lyrics {
+public abstract class Lyrics {
 	
-	private int posX, posY, speed;
+	protected int posX, posY, speed;
 	public String lyric;
-	private PApplet app;
-	//private char lyric;
+	protected PApplet app;
 	
-	public Lyrics(String lyric, int posX, int posY, int speed, PApplet app) {
+	public Lyrics(String lyric, int posX, int posY, PApplet app) {
 		
 		this.lyric = lyric;
 		this.posX = posX;
 		this.posY = posY;
-		this.speed = speed;
 		this.app = app;
 	}
+
 	
-	public void createLyrics(){
-		posX = (int) app.random(15, 580);
-		posY = (int) app.random(-70, -10);
-		speed = 2;
-		paintLyrics();
-		move();
-	}
-	
-	private void move() {
-		posY += speed;
-	}
-	
-	public void paintLyrics() {
-		app.fill(0);
-		app.textSize(20);
-		app.text(lyric, posX, posY);
-		move();
-	}
+	public abstract void paintLyrics();
+		
 
 	public int getPosX() {
 		return posX;
