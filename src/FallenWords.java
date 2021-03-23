@@ -1,9 +1,20 @@
+
 import processing.core.PApplet;
 
-public class FallenWords extends Lyrics{
+public class FallenWords extends Lyrics {
 
-	public FallenWords(String lyric, int posX, int posY, PApplet app) {
+	private int speed;
+
+	public FallenWords(String lyric, int posX, int posY, PApplet app, int speed) {
 		super(lyric, posX, posY, app);
+		this.speed = speed;
+	}
+
+	private void move() {
+		if(posY>=615) {
+	posY=0;
+		}
+		posY += speed;
 	}
 
 	@Override
@@ -11,7 +22,9 @@ public class FallenWords extends Lyrics{
 		app.fill(0);
 		app.textSize(20);
 		app.text(lyric, posX, posY);
-		
-	}
+		move();
 
+	}
 }
+
+
