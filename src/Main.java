@@ -16,7 +16,7 @@ public class Main extends PApplet {
 	}
 
 	public void settings() {
-		size(600, 675);
+		size(675, 675);
 	}
 
 	public void setup() {
@@ -51,15 +51,16 @@ public class Main extends PApplet {
 	public void draw() {
 		background(255);
 		noStroke();
-		fill(225);
+		
 
-		rect(0, 600, 600, 75);
+	
 		
 		initArray();
 		paintArray();
-
-		
-	}
+		fill(225);
+		rect(0, 600, width, 75);
+		}
+	
 
 	private void loadText() {
 		texts = loadStrings("./assets/strings.txt");
@@ -70,7 +71,7 @@ public class Main extends PApplet {
 		if (frameCount == 30) {	
 			
 				lyricsList.add(new Lyrics(words.get(indice), (int) random(15, 580), (int) random(-70, -10), 2, this));
-				System.out.println(lyricsList.size());
+				//System.out.println(lyricsList.size());
 				//System.out.println(lyricsList.get(k).getPosX());
 				indice++;
 			frameCount = 0;
@@ -80,7 +81,7 @@ public class Main extends PApplet {
 	private void paintArray() {
 		for (int i = 0; i < lyricsList.size(); i++) {
 			lyricsList.get(i).paintLyrics();
-			//System.out.println(lyricsList.get(i).getPosX());
+			//System.out.println(lyricsList.get(i).getPosY());
 
 		}
 	}

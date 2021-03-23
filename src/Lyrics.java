@@ -25,6 +25,9 @@ public class Lyrics {
 	}
 	
 	private void move() {
+		if(posY>=615) {
+	posY=0;
+		}
 		posY += speed;
 	}
 	
