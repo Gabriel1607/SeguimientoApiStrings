@@ -3,10 +3,11 @@ import processing.core.PApplet;
 public class Lyrics {
 	
 	private int posX, posY, speed;
+	public String lyric;
 	private PApplet app;
-	private char lyric;
+	//private char lyric;
 	
-	public Lyrics(int posX, int posY, int speed, PApplet app) {
+	public Lyrics(String lyric, int posX, int posY, int speed, PApplet app) {
 		
 		this.lyric = lyric;
 		this.posX = posX;
@@ -27,9 +28,10 @@ public class Lyrics {
 		posY += speed;
 	}
 	
-	private void paintLyrics() {
+	public void paintLyrics() {
 		app.fill(0);
 		app.text(lyric, posX, posY);
+		move();
 	}
 
 	public int getPosX() {
@@ -46,6 +48,14 @@ public class Lyrics {
 
 	public void setPosY(int posY) {
 		this.posY = posY;
+	}
+
+	public String getLyric() {
+		return lyric;
+	}
+
+	public void setLyric(String lyric) {
+		this.lyric = lyric;
 	}
 
 	public int getSpeed() {
