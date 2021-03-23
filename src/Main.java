@@ -8,6 +8,7 @@ public class Main extends PApplet {
 	ArrayList<Lyrics> lyricsList;
 	private Lyrics lyrics;
 	private boolean ready = false;
+	int	indice=0;
 
 	public static void main(String[] args) {
 		PApplet.main(Main.class.getName());
@@ -24,7 +25,7 @@ public class Main extends PApplet {
 		//ArrayList<Lyrics> lyricsList = new ArrayList<>();
 		lyricsList = new ArrayList<Lyrics>();
 		words = new ArrayList<String>();
-		frameRate(40);
+		frameRate(60);
 
 		loadText();
 
@@ -65,19 +66,21 @@ public class Main extends PApplet {
 	}
 
 	private void initArray() {
-		if (frameCount == 40) {
-			for (int k = 0; k < words.size(); k++) {
-				lyricsList.add(new Lyrics(words.get(k), (int) random(15, 580), (int) random(-70, -10), 2, this));
-				System.out.println(lyricsList.get(k).getPosX());
-				frameCount = 0;
-			}
+		
+		if (frameCount == 30) {	
+			
+				lyricsList.add(new Lyrics(words.get(indice), (int) random(15, 580), (int) random(-70, -10), 2, this));
+				System.out.println(lyricsList.size());
+				//System.out.println(lyricsList.get(k).getPosX());
+				indice++;
+			frameCount = 0;
 		}
 	}
 	
 	private void paintArray() {
 		for (int i = 0; i < lyricsList.size(); i++) {
 			lyricsList.get(i).paintLyrics();
-			System.out.println(lyricsList.get(i).getPosX());
+			//System.out.println(lyricsList.get(i).getPosX());
 
 		}
 	}

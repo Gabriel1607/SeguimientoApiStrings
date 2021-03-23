@@ -30,6 +30,7 @@ public class Lyrics {
 	
 	public void paintLyrics() {
 		app.fill(0);
+		app.textSize(20);
 		app.text(lyric, posX, posY);
 		move();
 	}
