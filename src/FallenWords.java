@@ -11,8 +11,8 @@ public class FallenWords extends Lyrics {
 	}
 
 	private void move() {
-		if(posY>=615) {
-	posY=0;
+		if (posY >= 615) {
+			posY = 0;
 		}
 		posY += speed;
 	}
@@ -26,5 +26,3 @@ public class FallenWords extends Lyrics {
 
 	}
 }
-
-

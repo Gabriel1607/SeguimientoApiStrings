@@ -21,7 +21,6 @@ public class Main extends PApplet {
 
 	public void setup() {
 
-
 		lyricsList = new ArrayList<Lyrics>();
 		words = new ArrayList<String>();
 		chosenWordsList = new ArrayList<Lyrics>();
@@ -36,8 +35,6 @@ public class Main extends PApplet {
 			}
 
 		}
-		
-		chooseWords();
 
 	}
 
@@ -46,7 +43,9 @@ public class Main extends PApplet {
 		noStroke();
 		initArray();
 		paintArray();
-		
+		chooseWords();
+		paintChosenWords();
+
 		fill(225);
 		rect(0, 600, 675, 75);
 
@@ -61,29 +60,36 @@ public class Main extends PApplet {
 		if (frameCount == 30) {
 
 			lyricsList.add(new FallenWords(words.get(indice), (int) random(15, 560), (int) random(-70, -10), this, 2));
-			//System.out.println(lyricsList.size());
+			// System.out.println(lyricsList.size());
 			indice++;
 			frameCount = 0;
-			
+
 		}
-		
+
 	}
 
 	private void paintArray() {
+
 		for (int i = 0; i < lyricsList.size(); i++) {
 			lyricsList.get(i).paintLyrics();
-
+			
 		}
 	}
 
 	private void chooseWords() {
+		System.out.println(lyricsList.size());
 		for (int i = 0; i <= 3; i++) {
-			//int randomIndex = (int) random(0, 164);
-			//System.out.println(randomIndex);
-			chosenWordsList.add(new ChosenWords(lyricsList.get((int) random(0, 164)).getLyric(), 50 + (i * 80), 650, this));
-			//System.out.println(chosenWordsList.get(i).getLyric());
+			int arrayTam = words.size();
+			chosenWordsList.add(new ChosenWords(words.get((int) random(0, arrayTam)), 50 + (i * 80), 650, this));
+			System.out.println(chosenWordsList.get(i).getLyric());
 		}
-		
-		
+
+	}
+
+	private void paintChosenWords() {
+		for (int i = 0; i < chosenWordsList.size(); i++) {
+			chosenWordsList.get(i).paintLyrics();
+		}
+
 	}
 }
