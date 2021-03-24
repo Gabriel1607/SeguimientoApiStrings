@@ -50,6 +50,9 @@ public abstract class Lyrics {
 	}
 
 
+	protected abstract void changeColor(int i, int j, int k);
+
+
 
 
 	

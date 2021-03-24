@@ -37,4 +37,10 @@ public class FallenWords extends Lyrics {
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	protected void changeColor(int i, int j, int k) {
+		// TODO Auto-generated method stub
+		
+	}
 }
