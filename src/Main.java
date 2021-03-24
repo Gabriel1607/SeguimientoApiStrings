@@ -52,26 +52,24 @@ public class Main extends PApplet {
 		fill(225);
 		rect(0, 600, 675, 75);
 		paintChosenWords();
-		
 
 	}
 
 	public void mousePressed() {
 
-		for (int i = 0; i < chosenWordsList.size(); i++) {
-			if ((mouseX > chosenWordsList.get(i).getPosX() - 20) && mouseX < (chosenWordsList.get(i).getPosX() + 20)
-					&& mouseY > (chosenWordsList.get(i).getPosY() - 10)
-					&& mouseY < (chosenWordsList.get(i).getPosY() + 10)) {
-				chosenPosition = i;
-				wordSelected = chosenWordsList.get(i).getLyric();
-				chosenWordsList.get(i).setDragChosen(!chosenWordsList.get(i).isDragChosen());
-
+		mouseDrag();
+		
+			if (mouseY < 675 && mouseY > 600) {
+				System.out.println(mouseY);
+				chosenPosition();
+			} else {
+				mouseDrag();
 			}
-			chosenPosition();
+			
+			//matchWords();
 		}
-		
-		
-	}
+
+	
 
 	private void loadText() {
 		texts = loadStrings("./assets/strings.txt");
@@ -102,9 +100,8 @@ public class Main extends PApplet {
 			int arrayTam = words.size();
 			chosenWordsList.add(new ChosenWords(words.get((int) random(0, arrayTam)), (100 * i) + 100, 645, this));
 			System.out.println(chosenWordsList.get(i).getLyric());
-			
+
 		}
-			
 
 	}
 
@@ -115,17 +112,39 @@ public class Main extends PApplet {
 	}
 
 	/*private void matchWords() {
-		for (int i = 0; i < words.size(); i++) {
-			if (chosenWordsList.get(i).isDragChosen() == true) {
-				if (wordSelected.compareTo(lyricsList.get(i).getLyric()) == 0) {
-					words.remove(i);
-					chosenWordsList.get(chosenPosition).changeColor(0, 255, 0);
-					System.out.println("funciona");
+
+		for (int i = 0; i < lyricsList.size(); i++) {
+			if ((mouseX > lyricsList.get(i).getPosX() - 20) && mouseX < (lyricsList.get(i).getPosX() + 20)
+					&& mouseY > (lyricsList.get(i).getPosY() - 10) && mouseY < (lyricsList.get(i).getPosY() + 10)) {
+				if (chosenWordsList.get(i).isDragChosen() == true) {
+					if (wordSelected.compareTo(lyricsList.get(i).getLyric()) == 0) {
+						words.remove(i);
+						chosenWordsList.get(chosenPosition).changeColor(0, 255, 0);
+						chosenWordsList.get(i).setPosX((100 * i) + 100);
+						chosenWordsList.get(i).setPosY(645);
+						System.out.println("Match");
+					} else {
+						System.out.println("Don't match");
+					}
 				}
 			}
+
 		}
 
 	}*/
+	
+	private void mouseDrag() {
+		for (int i = 0; i < chosenWordsList.size(); i++) {
+			if ((mouseX > chosenWordsList.get(i).getPosX() - 25) && mouseX < (chosenWordsList.get(i).getPosX() + 25)
+					&& mouseY > (chosenWordsList.get(i).getPosY() - 20)
+					&& mouseY < (chosenWordsList.get(i).getPosY() + 20)) {
+				chosenPosition = i;
+				wordSelected = chosenWordsList.get(i).getLyric();
+				chosenWordsList.get(i).setDragChosen(!chosenWordsList.get(i).isDragChosen());
+
+			}
+		}
+	}
 
 	private void chosenPosition() {
 		for (int i = 0; i < chosenWordsList.size(); i++) {
