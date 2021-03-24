@@ -87,7 +87,7 @@ System.out.println(indice);
 for (int i = 0; i < words.size(); i++) {
 
 	
-		if (frameCount == 5) {
+		if (frameCount == 20) {
 			
 			lyricsList.add(new FallenWords(words.get(indice), (int) random(15, 560), (int) random(-70, -10), this, 1));
 			indice++;
