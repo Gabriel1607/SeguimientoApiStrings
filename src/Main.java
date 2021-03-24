@@ -10,8 +10,9 @@ public class Main extends PApplet {
 	int chosenPosition;
 	private String wordSelected;
 	private Lyrics lyrics;
+	int matchCount;
 
-	private int indice = 0;
+	private int indice;
 
 	public static void main(String[] args) {
 		PApplet.main(Main.class.getName());
@@ -28,7 +29,8 @@ public class Main extends PApplet {
 		words = new ArrayList<String>();
 		chosenWordsList = new ArrayList<Lyrics>();
 		frameRate(60);
-
+		indice=0;
+		matchCount = 0;
 		loadText();
 
 		for (int i = 0; i < texts.length; i++) {
@@ -48,11 +50,16 @@ public class Main extends PApplet {
 		noStroke();
 		initArray();
 		paintArray();
-//System.out.println(chosenPosition);
+System.out.println(indice);
 		fill(225);
 		rect(0, 600, 675, 75);
 		paintChosenWords();
-
+		if(indice>=156) {
+			for (int i = 0; i < lyricsList.size(); i++) {
+				indice=0;
+				lyricsList.remove(i);
+			}
+			}
 	}
 
 	public void mousePressed() {
@@ -75,19 +82,25 @@ public class Main extends PApplet {
 		texts = loadStrings("./assets/strings.txt");
 	}
 
-	private void initArray() {
+	private void initArray() { 	
+		
+for (int i = 0; i < words.size(); i++) {
 
-		if (frameCount == 30) {
+	
+		if (frameCount == 5) {
+			
 			lyricsList.add(new FallenWords(words.get(indice), (int) random(15, 560), (int) random(-70, -10), this, 1));
 			indice++;
 			frameCount = 0;
 
 		}
+}}
 
-	}
+
+	
 
 	private void paintArray() {
-
+		
 		for (int i = 0; i < lyricsList.size(); i++) {
 			lyricsList.get(i).paintLyrics();
 
@@ -114,27 +127,15 @@ public class Main extends PApplet {
 	private void matchWords() {
 
 		for (int i = 0; i < lyricsList.size(); i++) {
-			/*if ((mouseX > lyricsList.get(i).getPosX() - 20) && mouseX < (lyricsList.get(i).getPosX() + 20)
-					&& mouseY > (lyricsList.get(i).getPosY() - 10) && mouseY < (lyricsList.get(i).getPosY() + 10)) {
-				if (chosenWordsList.get(i).isDragChosen() == true) {
-					if (wordSelected.compareTo(lyricsList.get(i).getLyric()) == 0) {
-						words.remove(i);
-						chosenWordsList.get(chosenPosition).changeColor(0, 255, 0);
-						chosenWordsList.get(i).setPosX((100 * i) + 100);
-						chosenWordsList.get(i).setPosY(645);
-						System.out.println("Match");
-					} else {
-						System.out.println("Don't match");
-					}
-				}
-			}
-			
-*/
 			if ((mouseX > lyricsList.get(i).getPosX() - 20) && mouseX < (lyricsList.get(i).getPosX() + 20)
 		&& mouseY > (lyricsList.get(i).getPosY() - 10) && mouseY < (lyricsList.get(i).getPosY() + 10)&&
 		(chosenWordsList.get(chosenPosition).isDragChosen() == true)) {
 	if(chosenWordsList.get(chosenPosition).getLyric().compareTo(lyricsList.get(i).getLyric())==0) {
-		System.out.println("Match");
+		lyricsList.remove(i);
+		chosenWordsList.get(chosenPosition).changeColor(0, 255, 0);
+		chosenWordsList.get(chosenPosition).setDragChosen(false);
+		chosenPosition();
+		matchCount++;
 	}
 }
 			
