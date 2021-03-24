@@ -8,7 +8,7 @@ public class Main extends PApplet {
 	ArrayList<Lyrics> lyricsList;
 	ArrayList<Lyrics> chosenWordsList;
 	private Lyrics lyrics;
-	int indice = 0;
+	private int indice = 0;
 
 	public static void main(String[] args) {
 		PApplet.main(Main.class.getName());
@@ -50,6 +50,19 @@ public class Main extends PApplet {
 
 	}
 
+	public void mousePressed() {
+		for (int i = 0; i < chosenWordsList.size(); i++) {
+			if (mouseX > (chosenWordsList.get(i).getPosX() - 10) && mouseX < (chosenWordsList.get(i).getPosX() + 10)
+					&& mouseY > (chosenWordsList.get(i).getPosY() - 10)
+					&& mouseY < (chosenWordsList.get(i).getPosY() + 10)) {
+				cursor(HAND);
+				chosenWordsList.get(i).setDragChosen(!chosenWordsList.get(i).isDragChosen());
+			} else {
+				cursor(ARROW);
+			}
+		}
+	}
+
 	private void loadText() {
 		texts = loadStrings("./assets/strings.txt");
 	}
@@ -71,7 +84,7 @@ public class Main extends PApplet {
 
 		for (int i = 0; i < lyricsList.size(); i++) {
 			lyricsList.get(i).paintLyrics();
-			
+
 		}
 	}
 
@@ -79,7 +92,7 @@ public class Main extends PApplet {
 		System.out.println(lyricsList.size());
 		for (int i = 0; i <= 3; i++) {
 			int arrayTam = words.size();
-			chosenWordsList.add(new ChosenWords(words.get((int) random(0, arrayTam)), 130 * i+2, 650, this));
+			chosenWordsList.add(new ChosenWords(words.get((int) random(0, arrayTam)), (100 * i) + 100, 645, this));
 			System.out.println(chosenWordsList.get(i).getLyric());
 		}
 

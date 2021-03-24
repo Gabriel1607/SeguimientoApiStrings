@@ -46,6 +46,12 @@ public abstract class Lyrics {
 		return speed;
 	}
 
+
+	protected abstract boolean isDragChosen();
+
+
+	protected abstract void setDragChosen(boolean b);
+
 	
 	
 	

@@ -25,4 +25,16 @@ public class FallenWords extends Lyrics {
 		move();
 
 	}
+
+	@Override
+	protected boolean isDragChosen() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	protected void setDragChosen(boolean b) {
+		// TODO Auto-generated method stub
+		
+	}
 }
