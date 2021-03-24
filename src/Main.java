@@ -39,6 +39,7 @@ public class Main extends PApplet {
 	}
 
 	public void draw() {
+		textAlign(CENTER);
 		background(255);
 		noStroke();
 		initArray();
@@ -51,18 +52,18 @@ public class Main extends PApplet {
 	}
 
 	public void mousePressed() {
+
 		for (int i = 0; i < chosenWordsList.size(); i++) {
-			if (mouseX > (chosenWordsList.get(i).getPosX() - 10) && mouseX < (chosenWordsList.get(i).getPosX() + 10)
+			if ((mouseX > chosenWordsList.get(i).getPosX() - 10) && mouseX < (chosenWordsList.get(i).getPosX() + 10)
 					&& mouseY > (chosenWordsList.get(i).getPosY() - 10)
 					&& mouseY < (chosenWordsList.get(i).getPosY() + 10)) {
-				cursor(HAND);
 				chosenWordsList.get(i).setDragChosen(!chosenWordsList.get(i).isDragChosen());
-			} else {
-				cursor(ARROW);
+
 			}
 		}
 	}
 
+	
 	private void loadText() {
 		texts = loadStrings("./assets/strings.txt");
 	}
