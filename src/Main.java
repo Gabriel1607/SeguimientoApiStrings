@@ -82,7 +82,7 @@ public class Main extends PApplet {
 
 	private void initArray() {
 
-		for (int i = 0; i < words.size(); i++) {
+		
 
 			if (frameCount == 12) {
 
@@ -93,7 +93,7 @@ public class Main extends PApplet {
 
 			}
 		}
-	}
+	
 
 	private void paintArray() {
 
