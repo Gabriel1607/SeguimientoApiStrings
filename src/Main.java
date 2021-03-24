@@ -35,7 +35,7 @@ public class Main extends PApplet {
 			}
 
 		}
-
+		chooseWords();
 	}
 
 	public void draw() {
@@ -43,11 +43,10 @@ public class Main extends PApplet {
 		noStroke();
 		initArray();
 		paintArray();
-		chooseWords();
-		paintChosenWords();
 
 		fill(225);
 		rect(0, 600, 675, 75);
+		paintChosenWords();
 
 	}
 
@@ -80,7 +79,7 @@ public class Main extends PApplet {
 		System.out.println(lyricsList.size());
 		for (int i = 0; i <= 3; i++) {
 			int arrayTam = words.size();
-			chosenWordsList.add(new ChosenWords(words.get((int) random(0, arrayTam)), 50 + (i * 80), 650, this));
+			chosenWordsList.add(new ChosenWords(words.get((int) random(0, arrayTam)), 130 * i+2, 650, this));
 			System.out.println(chosenWordsList.get(i).getLyric());
 		}
 
@@ -90,6 +89,5 @@ public class Main extends PApplet {
 		for (int i = 0; i < chosenWordsList.size(); i++) {
 			chosenWordsList.get(i).paintLyrics();
 		}
-
 	}
 }

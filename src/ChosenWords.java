@@ -11,7 +11,7 @@ public ChosenWords(String lyric, int posX, int posY,  PApplet app) {
 
 		@Override
 		public void paintLyrics() {
-			app.fill(22, 255, 10);
+			app.fill(255, 10, 10);
 			app.textSize(20);
 			app.text(lyric, posX, posY);
 		}
