@@ -48,7 +48,7 @@ public class Main extends PApplet {
 		noStroke();
 		initArray();
 		paintArray();
-
+//System.out.println(chosenPosition);
 		fill(225);
 		rect(0, 600, 675, 75);
 		paintChosenWords();
@@ -60,13 +60,13 @@ public class Main extends PApplet {
 		mouseDrag();
 		
 			if (mouseY < 675 && mouseY > 600) {
-				System.out.println(mouseY);
+				//System.out.println(mouseY);
 				chosenPosition();
 			} else {
 				mouseDrag();
 			}
 			
-			//matchWords();
+			matchWords();
 		}
 
 	
@@ -78,7 +78,7 @@ public class Main extends PApplet {
 	private void initArray() {
 
 		if (frameCount == 30) {
-			lyricsList.add(new FallenWords(words.get(indice), (int) random(15, 560), (int) random(-70, -10), this, 2));
+			lyricsList.add(new FallenWords(words.get(indice), (int) random(15, 560), (int) random(-70, -10), this, 1));
 			indice++;
 			frameCount = 0;
 
@@ -95,7 +95,7 @@ public class Main extends PApplet {
 	}
 
 	private void chooseWords() {
-		System.out.println(lyricsList.size());
+		//System.out.println(lyricsList.size());
 		for (int i = 0; i <= 3; i++) {
 			int arrayTam = words.size();
 			chosenWordsList.add(new ChosenWords(words.get((int) random(0, arrayTam)), (100 * i) + 100, 645, this));
@@ -111,10 +111,10 @@ public class Main extends PApplet {
 		}
 	}
 
-	/*private void matchWords() {
+	private void matchWords() {
 
 		for (int i = 0; i < lyricsList.size(); i++) {
-			if ((mouseX > lyricsList.get(i).getPosX() - 20) && mouseX < (lyricsList.get(i).getPosX() + 20)
+			/*if ((mouseX > lyricsList.get(i).getPosX() - 20) && mouseX < (lyricsList.get(i).getPosX() + 20)
 					&& mouseY > (lyricsList.get(i).getPosY() - 10) && mouseY < (lyricsList.get(i).getPosY() + 10)) {
 				if (chosenWordsList.get(i).isDragChosen() == true) {
 					if (wordSelected.compareTo(lyricsList.get(i).getLyric()) == 0) {
@@ -128,10 +128,19 @@ public class Main extends PApplet {
 					}
 				}
 			}
-
+			
+*/
+			if ((mouseX > lyricsList.get(i).getPosX() - 20) && mouseX < (lyricsList.get(i).getPosX() + 20)
+		&& mouseY > (lyricsList.get(i).getPosY() - 10) && mouseY < (lyricsList.get(i).getPosY() + 10)&&
+		(chosenWordsList.get(chosenPosition).isDragChosen() == true)) {
+	if(chosenWordsList.get(chosenPosition).getLyric().compareTo(lyricsList.get(i).getLyric())==0) {
+		System.out.println("Match");
+	}
+}
+			
 		}
 
-	}*/
+	}
 	
 	private void mouseDrag() {
 		for (int i = 0; i < chosenWordsList.size(); i++) {
