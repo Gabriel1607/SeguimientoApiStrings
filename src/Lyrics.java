@@ -17,6 +17,9 @@ public abstract class Lyrics {
 	
 	public abstract void paintLyrics();
 		
+	protected abstract boolean isDragChosen();
+
+	protected abstract void setDragChosen(boolean b);
 
 	public int getPosX() {
 		return posX;
@@ -47,10 +50,7 @@ public abstract class Lyrics {
 	}
 
 
-	protected abstract boolean isDragChosen();
 
-
-	protected abstract void setDragChosen(boolean b);
 
 	
 	

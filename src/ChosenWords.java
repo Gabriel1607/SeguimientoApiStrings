@@ -6,6 +6,7 @@ import processing.core.PApplet;
 public class ChosenWords extends Lyrics{
 	
 	private boolean dragChosen = false;
+	private int r=255 ,g=10,b=10;
 		
 public ChosenWords(String lyric, int posX, int posY,  PApplet app) {
 		super (lyric, posX, posY, app);
@@ -14,7 +15,7 @@ public ChosenWords(String lyric, int posX, int posY,  PApplet app) {
 
 		@Override
 		public void paintLyrics() {
-			app.fill(255, 10, 10);
+			app.fill(r, g, b);
 			app.textSize(20);
 			app.text(lyric, posX, posY);
 			dragWord();
@@ -26,6 +27,13 @@ public ChosenWords(String lyric, int posX, int posY,  PApplet app) {
 				posY = app.mouseY;
 			}
 		}
+		
+		public void changeColor(int r, int g, int b) {
+				this.r = r;
+				this.g = g;
+				this.b = b;
+			}
+		
 
 
 		public boolean isDragChosen() {

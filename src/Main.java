@@ -7,6 +7,7 @@ public class Main extends PApplet {
 	ArrayList<String> words;
 	ArrayList<Lyrics> lyricsList;
 	ArrayList<Lyrics> chosenWordsList;
+	int chosenPosition;
 	private Lyrics lyrics;
 	private int indice = 0;
 
@@ -54,16 +55,17 @@ public class Main extends PApplet {
 	public void mousePressed() {
 
 		for (int i = 0; i < chosenWordsList.size(); i++) {
-			if ((mouseX > chosenWordsList.get(i).getPosX() - 10) && mouseX < (chosenWordsList.get(i).getPosX() + 10)
+			if ((mouseX > chosenWordsList.get(i).getPosX() - 17) && mouseX < (chosenWordsList.get(i).getPosX() + 17)
 					&& mouseY > (chosenWordsList.get(i).getPosY() - 10)
 					&& mouseY < (chosenWordsList.get(i).getPosY() + 10)) {
+				chosenPosition = i;
 				chosenWordsList.get(i).setDragChosen(!chosenWordsList.get(i).isDragChosen());
 
 			}
+
 		}
 	}
 
-	
 	private void loadText() {
 		texts = loadStrings("./assets/strings.txt");
 	}
@@ -71,9 +73,7 @@ public class Main extends PApplet {
 	private void initArray() {
 
 		if (frameCount == 30) {
-
 			lyricsList.add(new FallenWords(words.get(indice), (int) random(15, 560), (int) random(-70, -10), this, 2));
-			// System.out.println(lyricsList.size());
 			indice++;
 			frameCount = 0;
 
