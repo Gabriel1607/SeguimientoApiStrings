@@ -19,7 +19,7 @@ public class FallenWords extends Lyrics {
 
 	@Override
 	public void paintLyrics() {
-		app.fill(0);
+		app.fill(27, 27, 30);
 		app.textSize(20);
 		app.text(lyric, posX, posY);
 		move();
@@ -35,12 +35,30 @@ public class FallenWords extends Lyrics {
 	@Override
 	protected void setDragChosen(boolean b) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	protected void changeColor(int i, int j, int k) {
 		// TODO Auto-generated method stub
-		
+
+	}
+
+	@Override
+	protected void setMatched(boolean b) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	protected boolean isMatched(boolean b) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	protected boolean isMatched() {
+		// TODO Auto-generated method stub
+		return false;
 	}
 }

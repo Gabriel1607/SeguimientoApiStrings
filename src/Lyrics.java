@@ -53,6 +53,15 @@ public abstract class Lyrics {
 	protected abstract void changeColor(int i, int j, int k);
 
 
+	protected abstract void setMatched(boolean b);
+
+
+	protected abstract boolean isMatched(boolean b);
+
+
+	protected abstract boolean isMatched();
+
+
 
 
 	
