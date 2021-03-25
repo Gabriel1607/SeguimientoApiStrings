@@ -60,15 +60,6 @@ public abstract class Lyrics {
 	public int getSpeed() {
 		return speed;
 	}
-
-
-
-
-
-
-	
-	
-	
 }
 
 
