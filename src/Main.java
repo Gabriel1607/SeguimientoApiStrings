@@ -34,7 +34,7 @@ public class Main extends PApplet {
 		chosenWordsList = new ArrayList<Lyrics>();
 		frameRate(60);
 		indice=0;
-		matchCount = 0;
+		matchCount = 4;
 		botonR = false;
 		
 		loadText();
@@ -138,6 +138,7 @@ public class Main extends PApplet {
 		for (int i = 0; i <= 3; i++) {
 			int arrayTam = words.size();
 			chosenWordsList.add(new ChosenWords(Uppercase(words.get((int) random(0, arrayTam))), (100 * i) + 100, 645, this));
+			System.out.println(chosenWordsList.get(i).getLyric());
 			//System.out.println(chosenWordsList.get(i).getLyric());
 		}
 	}
@@ -189,7 +190,7 @@ public class Main extends PApplet {
 	private void saveText() {
 		savedText = createWriter("./assets/newText.txt");
 		for (int i = 0; i < words.size(); i++) {
-				lyricsList.add(new FallenWords((words.get(indice)), (int) random(15, 560), (int) random(-70, -10), this, 1));
+				lyricsList.add(new FallenWords((words.get(i)), (int) random(15, 560), (int) random(-70, -10), this, 1));
 		}
 		
 		for (int i = 0; i < lyricsList.size();i++) {
@@ -201,11 +202,11 @@ public class Main extends PApplet {
 				}
 			}
 			
-			for (int j = 0; j < chosenWordsList.size(); j++) {
-				savedText.println(chosenWordsList.get(j).getLyric().toUpperCase());
+			
 			}
 
-			
+		for (int j = 0; j < chosenWordsList.size(); j++) {
+			savedText.println(chosenWordsList.get(j).getLyric().toUpperCase());
 		}
 		savedText.flush();
 		savedText.close();
