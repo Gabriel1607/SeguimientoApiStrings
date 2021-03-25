@@ -141,6 +141,7 @@ public class Main extends PApplet {
 					lyricsList.remove(i);
 					chosenWordsList.get(chosenPosition).changeColor(0, 255, 0);
 					chosenWordsList.get(chosenPosition).setDragChosen(false);
+					chosenWordsList.get(chosenPosition).setMatched(true);
 					chosenPosition();
 					matchCount++;
 				}
@@ -150,7 +151,7 @@ public class Main extends PApplet {
 	
 	private void mouseDrag() {
 		for (int i = 0; i < chosenWordsList.size(); i++) {
-			if ((mouseX > chosenWordsList.get(i).getPosX() - 25) && mouseX < (chosenWordsList.get(i).getPosX() + 25)
+			if (chosenWordsList.get(i).isMatched() == false &&(mouseX > chosenWordsList.get(i).getPosX() - 25) && mouseX < (chosenWordsList.get(i).getPosX() + 25)
 			&& mouseY > (chosenWordsList.get(i).getPosY() - 20)
 			&& mouseY < (chosenWordsList.get(i).getPosY() + 20)) {
 				chosenPosition = i;
