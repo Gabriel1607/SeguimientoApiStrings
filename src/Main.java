@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import processing.core.PApplet;
+import java.io.PrintWriter;
 
 public class Main extends PApplet {
 
@@ -15,6 +16,8 @@ public class Main extends PApplet {
 	private int indice;
 	
 	private boolean botonR;
+	
+	private PrintWriter impresora;
 
 	public static void main(String[] args) {
 		PApplet.main(Main.class.getName());
@@ -94,7 +97,10 @@ public class Main extends PApplet {
 			//System.out.println(matchCount);
 			
 			if(mouseX > 501 && mouseX < 667 && mouseY > 609 && mouseY < 665 && botonR) {
-				System.out.println("Click");
+				//System.out.println("Click");
+				impresora = createWriter("./assets/strings.txt");
+				
+				
 			}
 		}
 	
