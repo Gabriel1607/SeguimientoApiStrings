@@ -34,7 +34,7 @@ public class Main extends PApplet {
 		chosenWordsList = new ArrayList<Lyrics>();
 		frameRate(60);
 		indice=0;
-		matchCount = 4;
+		matchCount = 0;
 		botonR = false;
 		
 		loadText();
@@ -196,6 +196,7 @@ public class Main extends PApplet {
 		for (int i = 0; i < lyricsList.size();i++) {
 			for (int j = 0; j < chosenWordsList.size(); j++) {
 				if (lyricsList.get(i).getLyric().equals(chosenWordsList.get(j))) {
+					lyricsList.remove(i);
 				} else {
 					savedText.println(lyricsList.get(i).getLyric());
 					break;
