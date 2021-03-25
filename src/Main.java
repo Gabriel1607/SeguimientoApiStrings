@@ -1,3 +1,4 @@
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import processing.core.PApplet;
 
@@ -11,6 +12,7 @@ public class Main extends PApplet {
 	private String wordSelected;
 	private Lyrics lyrics;
 	int matchCount;
+	PrintWriter savedText;
 
 	private int indice;
 	
@@ -26,7 +28,7 @@ public class Main extends PApplet {
 	}
 
 	public void setup() {
-
+		
 		lyricsList = new ArrayList<Lyrics>();
 		words = new ArrayList<String>();
 		chosenWordsList = new ArrayList<Lyrics>();
@@ -34,6 +36,7 @@ public class Main extends PApplet {
 		indice=0;
 		matchCount = 0;
 		botonR = false;
+		
 		loadText();
 
 		for (int i = 0; i < texts.length; i++) {
@@ -79,6 +82,10 @@ public class Main extends PApplet {
 			textSize(15);
 			text("Generar txt",582, 644);
 			botonR = true;
+			
+			for (int i = 0; i < lyricsList.size(); i++) {
+				lyricsList.remove(i);
+			}
 		}
 	}
 
@@ -95,6 +102,11 @@ public class Main extends PApplet {
 			
 			if(mouseX > 501 && mouseX < 667 && mouseY > 609 && mouseY < 665 && botonR) {
 				System.out.println("Click");
+				//System.out.println(lyricsList.size());
+				saveText();
+				
+				
+				
 			}
 		}
 	
@@ -173,6 +185,33 @@ public class Main extends PApplet {
 			}
 		}
 	}
+	
+	private void saveText() {
+		savedText = createWriter("./assets/newText.txt");
+		for (int i = 0; i < words.size(); i++) {
+				lyricsList.add(new FallenWords((words.get(indice)), (int) random(15, 560), (int) random(-70, -10), this, 1));
+		}
+		
+		for (int i = 0; i < lyricsList.size();i++) {
+			for (int j = 0; j < chosenWordsList.size(); j++) {
+				if (lyricsList.get(i).getLyric().equals(chosenWordsList.get(j))) {
+				} else {
+					savedText.println(lyricsList.get(i).getLyric());
+					break;
+				}
+			}
+			
+			for (int j = 0; j < chosenWordsList.size(); j++) {
+				savedText.println(chosenWordsList.get(j).getLyric().toUpperCase());
+			}
+
+			
+		}
+		savedText.flush();
+		savedText.close();
+		}
+		
+		
 	public static String Uppercase(String str) {
 		 if(str == null || str.isEmpty()) { 
 		return str;
