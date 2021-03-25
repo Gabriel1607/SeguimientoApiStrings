@@ -13,6 +13,8 @@ public class Main extends PApplet {
 	int matchCount;
 
 	private int indice;
+	
+	private boolean botonR;
 
 	public static void main(String[] args) {
 		PApplet.main(Main.class.getName());
@@ -31,6 +33,7 @@ public class Main extends PApplet {
 		frameRate(60);
 		indice=0;
 		matchCount = 0;
+		botonR = false;
 		loadText();
 
 		for (int i = 0; i < texts.length; i++) {
@@ -75,6 +78,7 @@ public class Main extends PApplet {
 			fill(0);
 			textSize(15);
 			text("Generar txt",582, 644);
+			botonR = true;
 		}
 	}
 
@@ -89,7 +93,7 @@ public class Main extends PApplet {
 			matchWords();
 			//System.out.println(matchCount);
 			
-			if(mouseX > 501 && mouseX < 667 && mouseY > 609 && mouseY < 665) {
+			if(mouseX > 501 && mouseX < 667 && mouseY > 609 && mouseY < 665 && botonR) {
 				System.out.println("Click");
 			}
 		}
