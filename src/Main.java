@@ -100,8 +100,8 @@ public class Main extends PApplet {
 
 	private void initArray() { 	
 		for (int i = 0; i < words.size(); i++) {
-			if (frameCount == 5) {
-				lyricsList.add(new FallenWords(words.get(indice), (int) random(15, 560), (int) random(-70, -10), this, 1));
+			if (frameCount == 12) {
+				lyricsList.add(new FallenWords(Uppercase(words.get(indice)), (int) random(15, 560), (int) random(-70, -10), this, 1));
 				indice++;
 				frameCount = 0;
 			}
@@ -121,7 +121,7 @@ public class Main extends PApplet {
 		//System.out.println(lyricsList.size());
 		for (int i = 0; i <= 3; i++) {
 			int arrayTam = words.size();
-			chosenWordsList.add(new ChosenWords(words.get((int) random(0, arrayTam)), (100 * i) + 100, 645, this));
+			chosenWordsList.add(new ChosenWords(Uppercase(words.get((int) random(0, arrayTam))), (100 * i) + 100, 645, this));
 			//System.out.println(chosenWordsList.get(i).getLyric());
 		}
 	}
@@ -168,4 +168,10 @@ public class Main extends PApplet {
 			}
 		}
 	}
+	public static String Uppercase(String str) {
+		 if(str == null || str.isEmpty()) { 
+		return str;
+		 } 
+		return str.substring(0, 1).toUpperCase() + str.substring(1); 
+		}
 }
